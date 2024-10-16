@@ -13,46 +13,105 @@
         }
         .cv-container {
             background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .cv-container:hover {
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
         }
         .left-column {
             background-color: #343a40;
             color: #ffffff;
+            transition: background-color 0.3s ease;
+            border-radius: 15px 0 0 15px;
+        }
+        .left-column:hover {
+            background-color: #23272b;
         }
         .profile-picture {
             width: 150px;
             height: 150px;
             object-fit: cover;
             border-radius: 50%;
+            border: 3px solid #ffffff;
+            transition: transform 0.3s ease;
+        }
+        .profile-picture:hover {
+            transform: scale(1.05);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+        .section-title:hover::after {
+            width: 100%;
+        }
+        .badge {
+            transition: transform 0.2s ease;
+            border-radius: 20px;
+            padding: 8px 12px;
+        }
+        .badge:hover {
+            transform: translateY(-2px);
+        }
+        .experience-item, .education-item {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.2s ease;
+        }
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
         }
     </style>
 </head>
 <body>
-    <div class="container mt-4 cv-container">
+    <div class="container mt-4 cv-container fade-in">
         <div class="row">
             <div class="col-md-4 left-column p-4">
                 <img src="votre-photo.jpg" alt="Photo de profil" class="profile-picture mb-3">
                 <h2>Votre Nom</h2>
                 <p>Votre titre professionnel</p>
                 <hr>
-                <h5>Contact</h5>
+                <h5 class="section-title">Contact</h5>
                 <p><i class="fas fa-envelope"></i> votre@email.com</p>
                 <p><i class="fas fa-phone"></i> +33 6 12 34 56 78</p>
                 <p><i class="fas fa-map-marker-alt"></i> Votre Ville, Pays</p>
                 <hr>
-                <h5>Liens</h5>
+                <h5 class="section-title">Liens</h5>
                 <p><i class="fab fa-linkedin"></i> linkedin.com/in/votrenom</p>
                 <p><i class="fab fa-github"></i> github.com/votrenom</p>
             </div>
             <div class="col-md-8 p-4">
                 <section id="about">
-                    <h3>À propos</h3>
+                    <h3 class="section-title">À propos</h3>
                     <p>Votre description professionnelle ici. Mettez en avant vos principales qualités et objectifs.</p>
                 </section>
                 <hr>
                 <section id="experience">
-                    <h3>Expérience professionnelle</h3>
-                    <div class="mb-3">
+                    <h3 class="section-title">Expérience professionnelle</h3>
+                    <div class="experience-item">
                         <h5>Titre du poste</h5>
                         <p>Nom de l'entreprise | Date de début - Date de fin</p>
                         <ul>
@@ -60,25 +119,22 @@
                             <li>Responsabilité ou réalisation 2</li>
                         </ul>
                     </div>
-                    <!-- Répétez ce bloc pour chaque expérience -->
                 </section>
                 <hr>
                 <section id="education">
-                    <h3>Formation</h3>
-                    <div class="mb-3">
+                    <h3 class="section-title">Formation</h3>
+                    <div class="education-item">
                         <h5>Nom du diplôme</h5>
                         <p>Nom de l'établissement | Année d'obtention</p>
                     </div>
-                    <!-- Répétez ce bloc pour chaque formation -->
                 </section>
                 <hr>
                 <section id="skills">
-                    <h3>Compétences</h3>
+                    <h3 class="section-title">Compétences</h3>
                     <ul class="list-inline">
                         <li class="list-inline-item"><span class="badge bg-primary">Compétence 1</span></li>
                         <li class="list-inline-item"><span class="badge bg-primary">Compétence 2</span></li>
                         <li class="list-inline-item"><span class="badge bg-primary">Compétence 3</span></li>
-                        <!-- Ajoutez d'autres compétences ici -->
                     </ul>
                 </section>
             </div>
